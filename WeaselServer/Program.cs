@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using WeaselServer.CommandHandler;
 
 namespace WeaselServer
 {
@@ -10,6 +7,20 @@ namespace WeaselServer
     {
         static void Main(string[] args)
         {
+            //Starting the server
+            Console.WriteLine("Starting the Weasel-Server!");
+
+            //Accept unlimited commands from the user
+            string command = String.Empty;
+            while(command != "exit")
+            {
+                //Read next command
+                Console.Write("> ");
+                command = Console.ReadLine();
+
+                //Pass the command to the ConsoleQueryWorker
+                ConsoleQueryWorker.PickHandler(command);
+            }
         }
     }
 }
