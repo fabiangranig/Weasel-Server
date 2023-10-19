@@ -24,6 +24,16 @@ namespace WeaselServer.CommandHandler
                     LoggerWorker.LogText("Showed help text.");
                     break;
 
+                case "kuka":
+                    if (split_string[1] == "move")
+                    {
+                        KukaResolver.MoveLikeFile(split_string[2]);
+                        LoggerWorker.LogText("Command: " + command);
+                        break;
+                    }
+                    LoggerWorker.LogText("Command '" + command + "' not found.");
+                    break;
+
                 default:
                     NotFoundResolver.ConsoleOutputNotFound(command);
                     LoggerWorker.LogText("Command '" + command + "' not found.");

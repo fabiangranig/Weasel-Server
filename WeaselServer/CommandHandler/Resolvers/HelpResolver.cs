@@ -12,7 +12,7 @@ namespace WeaselServer.CommandHandler.Resolvers
         {
             //Output the help menu
             Console.WriteLine("help -> Shows help menu");
-            Console.WriteLine("weasel move [id] [position] -> Moves weasel with corresponding id to entered positon");
+            Console.WriteLine("kuka move <file> -> Moves Kuka like file");
         }
     }
 }

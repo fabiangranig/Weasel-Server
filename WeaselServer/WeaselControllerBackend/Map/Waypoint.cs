@@ -11,10 +11,12 @@ namespace WeaselServer.WeaselControllerBackend.Map
     internal class Waypoint
     {
         private int _PointID;
-        private bool _Reserved;
-        private Color _ReservedColor;
+        public bool _Reserved;
+        public Color _ReservedColor;
         private int _ReservedColorNumber;
-        private List<Waypoint> _Next;
+        public List<Waypoint> _Next;
+
+        public int PointID { get { return this._PointID; } }
 
         public Waypoint(int number)
         {
