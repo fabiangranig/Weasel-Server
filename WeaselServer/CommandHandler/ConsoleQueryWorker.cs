@@ -27,7 +27,7 @@ namespace WeaselServer.CommandHandler
                 case "kuka":
                     if (split_string[1] == "move")
                     {
-                        KukaResolver.MoveLikeFile(split_string[2]);
+                        KukaResolver.AddMovement(split_string[2]);
                         LoggerWorker.LogText("Command: " + command);
                         break;
                     }

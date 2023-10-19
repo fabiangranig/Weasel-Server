@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WeaselServer.CommandHandler.Handlers;
 using WeaselServer.Roboter.Kuka;
 
 namespace WeaselServer.CommandHandler.Resolvers
 {
     internal class KukaResolver
     {
-        private static KukaRoboter _KR;
+        private static KukaHandler _KH;
 
         static KukaResolver()
         {
-            _KR = new KukaRoboter();
+            _KH = new KukaHandler();
         }
 
-        public static void MoveLikeFile(string filePath)
+        public static void AddMovement(string item)
         {
-            _KR.MoveKukaWithFile(filePath);
+            _KH.AddItem(item);
         }
     }
 }

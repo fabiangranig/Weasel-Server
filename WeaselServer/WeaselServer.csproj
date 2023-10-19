@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandHandler\ConsoleQueryWorker.cs" />
+    <Compile Include="CommandHandler\Handlers\KukaHandler.cs" />
     <Compile Include="CommandHandler\Resolvers\HelpResolver.cs" />
     <Compile Include="CommandHandler\Resolvers\KukaResolver.cs" />
     <Compile Include="CommandHandler\Resolvers\NotFoundResolver.cs" />
@@ -87,6 +88,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Notes\ColorNumbers.txt" />
+    <Content Include="Notes\ThreadTimes.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
