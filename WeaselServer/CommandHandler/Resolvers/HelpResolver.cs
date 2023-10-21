@@ -17,6 +17,7 @@ namespace WeaselServer.CommandHandler.Resolvers
             Console.WriteLine("weasel create virtual Name(string)-Online(Boolean)-ID(INT)-HasBox(Boolean)-BatteryPercentage(INT)-" +
                 "LastPositon(INT)-HomePosition(INT)-Color(string)-ColorNumber(INT) -> Creates virtual Weasel");
             Console.WriteLine("map show -> shows map");
+            Console.WriteLine("map reserve <id> <color>");
         }
     }
 }

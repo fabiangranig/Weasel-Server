@@ -7,6 +7,7 @@ using WeaselServer.CommandHandler.Resolvers;
 using WeaselServer.General;
 using WeaselServer.Logger;
 using WeaselServer.CommandHandler.Handlers;
+using System.Drawing;
 
 namespace WeaselServer.CommandHandler
 {
@@ -52,6 +53,12 @@ namespace WeaselServer.CommandHandler
                     if (split_string[1] == "show")
                     {
                         WriteLineResolver.WriteLine(MapResolver.ShowMap());
+                        LoggerWorker.LogText("Command: " + command);
+                        break;
+                    }
+                    if (split_string[1] == "reserve")
+                    {
+                        MapResolver.Reserve(Int32.Parse(split_string[2]), Color.FromName(split_string[3]));
                         LoggerWorker.LogText("Command: " + command);
                         break;
                     }

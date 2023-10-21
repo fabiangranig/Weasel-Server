@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,11 @@ namespace WeaselServer.CommandHandler.Handlers
         public static string ShowMapJSON()
         {
             return _Map.ToJSON();
+        }
+
+        public static void Reserve(int id, Color color)
+        {
+            _Map.Reserve(id, color);
         }
     }
 }
