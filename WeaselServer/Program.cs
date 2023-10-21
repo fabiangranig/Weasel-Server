@@ -1,5 +1,6 @@
 ﻿using System;
 using WeaselServer.CommandHandler;
+using WeaselServer.CommandHandler.RestAPI;
 
 namespace WeaselServer
 {
@@ -9,6 +10,9 @@ namespace WeaselServer
         {
             //Starting the server
             Console.WriteLine("Starting the Weasel-Server!");
+            Console.WriteLine("Starting GET-Requests Handler...");
+            GetRequests.StartReuests();
+            Console.WriteLine("GET-Request Handler started.");
 
             //Accept unlimited commands from the user
             string command = String.Empty;

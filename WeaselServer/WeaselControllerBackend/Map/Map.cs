@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using WeaselServer.WeaselControllerBackend.JSON;
 
 namespace WeaselServer.WeaselControllerBackend.Map
 {
@@ -80,7 +83,7 @@ namespace WeaselServer.WeaselControllerBackend.Map
 
         private void ShowMapBackend(Waypoint way, ref List<string> points)
         {
-            string toAdd = way.PointID + " " + way._Reserved;
+            string toAdd = way.PointID + " " + way._Reserved + " " + way._ReservedColor.Name;
             if (way._Next == null)
             {
                 if (!points.Contains(toAdd))
@@ -108,9 +111,26 @@ namespace WeaselServer.WeaselControllerBackend.Map
             string MapInString = "";
             for (int i = 0; i < MapInList.Count; i++)
             {
-                MapInString += MapInList[i] + "\n";
+                MapInString += MapInList[i];
+
+                if(i < MapInList.Count - 1)
+                {
+                    MapInString += "\n";
+                }
             }
             return MapInString;
+        }
+
+        public string ToJSON()
+        {
+            List<string> MapInList = ShowMap();
+            List<WaypointJSON> waypointJSONs = new List<WaypointJSON>();
+            for (int i = 0; i < MapInList.Count; i++)
+            {
+                string[] split = MapInList[i].Split(' ');
+                waypointJSONs.Add(new WaypointJSON(Int32.Parse(split[0]), Convert.ToBoolean(split[1]), split[2]));
+            }
+            return JsonConvert.SerializeObject(waypointJSONs, Formatting.Indented);
         }
 
         //Pathfindig related

@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="S7.Net, Version=0.20.0.0, Culture=neutral, PublicKeyToken=d5812d469e84c693, processorArchitecture=MSIL">
       <HintPath>packages\S7netplus.0.20.0\lib\net462\S7.Net.dll</HintPath>
     </Reference>
@@ -66,8 +69,11 @@
     <Compile Include="CommandHandler\Handlers\WeaselHandler.cs" />
     <Compile Include="CommandHandler\Resolvers\HelpResolver.cs" />
     <Compile Include="CommandHandler\Resolvers\KukaResolver.cs" />
+    <Compile Include="CommandHandler\Resolvers\MapResolver.cs" />
     <Compile Include="CommandHandler\Resolvers\NotFoundResolver.cs" />
     <Compile Include="CommandHandler\Resolvers\WeaselResolver.cs" />
+    <Compile Include="CommandHandler\Resolvers\WriteLineResolver.cs" />
+    <Compile Include="CommandHandler\RestAPI\GetRequests.cs" />
     <Compile Include="General\StringManipulation.cs" />
     <Compile Include="Logger\LoggerWorker.cs" />
     <Compile Include="Program.cs" />
@@ -81,6 +87,7 @@
     <Compile Include="Roboter\Weasels\Weasel.cs" />
     <Compile Include="Roboter\Weasels\DestinationInformation.cs" />
     <Compile Include="Roboter\Weasels\WeaselTypes\VirtualWeasel.cs" />
+    <Compile Include="WeaselControllerBackend\JSON\WaypointJSON.cs" />
     <Compile Include="WeaselControllerBackend\Map\Map.cs" />
     <Compile Include="WeaselControllerBackend\Map\MapBackend.cs" />
     <Compile Include="WeaselControllerBackend\Map\txtParser.cs" />
@@ -93,6 +100,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Notes\ColorNumbers.txt" />
+    <Content Include="Notes\Network.txt" />
     <Content Include="Notes\ThreadTimes.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using WeaselServer.CommandHandler.Resolvers;
 using WeaselServer.General;
 using WeaselServer.Logger;
+using WeaselServer.CommandHandler.Handlers;
 
 namespace WeaselServer.CommandHandler
 {
@@ -41,6 +42,16 @@ namespace WeaselServer.CommandHandler
                     if (split_string[1] == "move")
                     {
                         KukaResolver.AddMovement(split_string[2]);
+                        LoggerWorker.LogText("Command: " + command);
+                        break;
+                    }
+                    LoggerWorker.LogText("Command '" + command + "' not found.");
+                    break;
+
+                case "map":
+                    if (split_string[1] == "show")
+                    {
+                        WriteLineResolver.WriteLine(MapResolver.ShowMap());
                         LoggerWorker.LogText("Command: " + command);
                         break;
                     }

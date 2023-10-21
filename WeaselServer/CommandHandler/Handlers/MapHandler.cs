@@ -16,5 +16,15 @@ namespace WeaselServer.CommandHandler.Handlers
             txtParser _txtParser = new txtParser("map.txt");
             _Map = _txtParser.ParseToWeaselMap();
         }
+
+        public static string ShowMap()
+        {
+            return _Map.ToString();
+        }
+
+        public static string ShowMapJSON()
+        {
+            return _Map.ToJSON();
+        }
     }
 }
