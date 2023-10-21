@@ -31,6 +31,7 @@ namespace WeaselServer.CommandHandler.Handlers
                 if(_MovementsLocations.Count > 0)
                 {
                     _KR.MoveKukaWithFile(_MovementsLocations[0]);
+                    _MovementsLocations.RemoveAt(0);
                 }
 
                 //Wait for next iteration

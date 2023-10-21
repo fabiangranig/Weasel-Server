@@ -10,10 +10,12 @@ namespace WeaselServer.WeaselControllerBackend.Map
     internal class Map
     {
         private Waypoint _Head;
+        private List<int[]> _CombinedNodes;
 
         public Map()
         {
             _Head = null;
+            _CombinedNodes = new List<int[]>();
         }
 
         public void AddNodeToNumber(Waypoint waypoint1, int id1)
@@ -243,6 +245,27 @@ namespace WeaselServer.WeaselControllerBackend.Map
                 arr2[i] = arr[i];
             }
             return arr2;
+        }
+
+        //Connect Points
+        public void ConnectTwoPoints(int start_point, int end_point)
+        {
+            Waypoint waypoint = MapBackend.FindWayPointBackend(_Head, start_point);
+
+            if (waypoint._Next == null)
+            {
+                waypoint._Next = new List<Waypoint>();
+            }
+
+            waypoint._Next.Add(MapBackend.FindWayPointBackend(_Head, end_point));
+        }
+
+        public void CombineTwoReservedNodes(int number1, int number2)
+        {
+            int[] arr = new int[2];
+            arr[0] = number1;
+            arr[1] = number2;
+            _CombinedNodes.Add(arr);
         }
     }
 }

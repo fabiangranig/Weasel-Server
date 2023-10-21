@@ -62,9 +62,12 @@
   <ItemGroup>
     <Compile Include="CommandHandler\ConsoleQueryWorker.cs" />
     <Compile Include="CommandHandler\Handlers\KukaHandler.cs" />
+    <Compile Include="CommandHandler\Handlers\MapHandler.cs" />
+    <Compile Include="CommandHandler\Handlers\WeaselHandler.cs" />
     <Compile Include="CommandHandler\Resolvers\HelpResolver.cs" />
     <Compile Include="CommandHandler\Resolvers\KukaResolver.cs" />
     <Compile Include="CommandHandler\Resolvers\NotFoundResolver.cs" />
+    <Compile Include="CommandHandler\Resolvers\WeaselResolver.cs" />
     <Compile Include="General\StringManipulation.cs" />
     <Compile Include="Logger\LoggerWorker.cs" />
     <Compile Include="Program.cs" />
@@ -75,10 +78,12 @@
     <Compile Include="Roboter\Kuka\RDK_Setup.cs" />
     <Compile Include="Roboter\Kuka\SPS_Claw.cs" />
     <Compile Include="Roboter\Roboter.cs" />
-    <Compile Include="Roboter\Weasel\Weasel.cs" />
-    <Compile Include="Roboter\Weasel\DestinationInformation.cs" />
+    <Compile Include="Roboter\Weasels\Weasel.cs" />
+    <Compile Include="Roboter\Weasels\DestinationInformation.cs" />
+    <Compile Include="Roboter\Weasels\WeaselTypes\VirtualWeasel.cs" />
     <Compile Include="WeaselControllerBackend\Map\Map.cs" />
     <Compile Include="WeaselControllerBackend\Map\MapBackend.cs" />
+    <Compile Include="WeaselControllerBackend\Map\txtParser.cs" />
     <Compile Include="WeaselControllerBackend\Map\Waypoint.cs" />
   </ItemGroup>
   <ItemGroup>

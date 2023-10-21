@@ -10,5 +10,11 @@ namespace WeaselServer.Roboter
     {
         protected string _Name;
         protected bool _Online;
+
+        public Roboter(string Name1, bool _Online1)
+        {
+            this._Name = Name1;
+            this._Online = _Online1;
+        }
     }
 }

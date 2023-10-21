@@ -24,6 +24,19 @@ namespace WeaselServer.CommandHandler
                     LoggerWorker.LogText("Showed help text.");
                     break;
 
+                case "weasel":
+                    if (split_string[1] == "create")
+                    {
+                        if (split_string[2] == "virtual")
+                        {
+                            WeaselResolver.AddWeaselVirtual(split_string[3]);
+                            LoggerWorker.LogText("Command: " + command);
+                            break;
+                        }
+                    }
+                    LoggerWorker.LogText("Command '" + command + "' not found.");
+                    break;
+
                 case "kuka":
                     if (split_string[1] == "move")
                     {
