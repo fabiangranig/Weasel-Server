@@ -67,6 +67,7 @@
     <Compile Include="CommandHandler\Handlers\KukaHandler.cs" />
     <Compile Include="CommandHandler\Handlers\MapHandler.cs" />
     <Compile Include="CommandHandler\Handlers\WeaselHandler.cs" />
+    <Compile Include="CommandHandler\Resolvers\ActionResolver.cs" />
     <Compile Include="CommandHandler\Resolvers\HelpResolver.cs" />
     <Compile Include="CommandHandler\Resolvers\KukaResolver.cs" />
     <Compile Include="CommandHandler\Resolvers\MapResolver.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Roboter\Roboter.cs" />
     <Compile Include="Roboter\Weasels\Weasel.cs" />
     <Compile Include="Roboter\Weasels\DestinationInformation.cs" />
+    <Compile Include="Roboter\Weasels\WeaselMovementHandler.cs" />
     <Compile Include="Roboter\Weasels\WeaselTypes\VirtualWeasel.cs" />
     <Compile Include="WeaselControllerBackend\JSON\WaypointJSON.cs" />
     <Compile Include="WeaselControllerBackend\Map\Map.cs" />

@@ -32,5 +32,20 @@ namespace WeaselServer.CommandHandler.Handlers
         {
             _Map.Reserve(id, color);
         }
+
+        public static int[] FreePath(int start, int end, Color weasel_color)
+        {
+            return _Map.FreePath(start, end, weasel_color);
+        }
+
+        public static int[] possibleRoute(int[] route, Color weasel_color)
+        {
+            return _Map.possibleRoute(route, weasel_color);
+        }
+
+        public static int[] RadiusRoute(int[] arr)
+        {
+            return _Map.RadiusRoute(arr);
+        }
     }
 }

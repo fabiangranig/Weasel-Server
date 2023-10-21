@@ -8,6 +8,7 @@ using WeaselServer.General;
 using WeaselServer.Logger;
 using WeaselServer.CommandHandler.Handlers;
 using System.Drawing;
+using WeaselServer.WeaselControllerBackend.Map;
 
 namespace WeaselServer.CommandHandler
 {
@@ -35,6 +36,20 @@ namespace WeaselServer.CommandHandler
                             LoggerWorker.LogText("Command: " + command);
                             break;
                         }
+                    }
+                    if (split_string[1] == "show")
+                    {
+                        WeaselResolver.DisplayWeasels();
+                        LoggerWorker.LogText("Command: " + command);
+                        break;
+                    }
+
+                    if (split_string[1] == "move")
+                    {
+                        string[] split = split_string[3].Split(':');
+                        WeaselResolver.AddDestination(Int32.Parse(split_string[2]), new DestinationInformation("Console", split[0], Int32.Parse(split[1]), split[2]));
+                        LoggerWorker.LogText("Command: " + command);
+                        break;
                     }
                     LoggerWorker.LogText("Command '" + command + "' not found.");
                     break;

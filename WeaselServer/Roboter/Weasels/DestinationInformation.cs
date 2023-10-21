@@ -13,12 +13,17 @@ namespace WeaselServer.WeaselControllerBackend.Map
         private int _Destination;
         private string _ActionAfterMovement;
 
+        public string SendBy { get { return _SendBy; } }
+        public string ActionBeforeMovement {  get { return _ActionBeforeMovement; } }
+        public int Destination { get { return _Destination; } }
+        public string ActionAfterMovement { get { return _ActionAfterMovement; } }
+
         public DestinationInformation(string SendBy, string ActionBeforeMovement, int Destination, string ActionAftermovement)
         {
             this._SendBy = SendBy;
-            _ActionBeforeMovement = ActionBeforeMovement;
-            _Destination = Destination;
-            _ActionAfterMovement = ActionAftermovement;
+            this._ActionBeforeMovement = ActionBeforeMovement;
+            this._Destination = Destination;
+            this._ActionAfterMovement = ActionAftermovement;
         }
     }
 }
