@@ -8,10 +8,20 @@ namespace WeaselServer.General
 {
     internal class IntManipulation
     {
-        public static int[] ArrayMinusOne(int[] arr)
+        public static int[] ArrayMinusOneSearchedItem(int[] arr, int number)
         {
-            int[] array = new int[arr.Length - 1];
-            for(int i = 0; i < arr.Length - 1; i++)
+            int location = 0;
+            for(int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] == number)
+                {
+                    location = i;
+                    break;
+                }
+            }
+
+            int[] array = new int[location];
+            for(int i = 0; i < array.Length; i++)
             {
                 array[i] = arr[i];
             }

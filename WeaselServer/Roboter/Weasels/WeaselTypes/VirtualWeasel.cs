@@ -46,6 +46,7 @@ namespace WeaselServer.Roboter.Weasels.WeaselTypes
         {
             int[] route = MapResolver.FreePath(_LastPosition, position, _Color);
 
+            
             _Moves.Clear();
 
             for (int i = 0; i < route.Length; i++)

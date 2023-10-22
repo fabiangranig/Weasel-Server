@@ -60,6 +60,9 @@ namespace WeaselServer.Roboter.Weasels
         {
             while (_Weasel[_WeaselID].LastPosition != destination)
             {
+                //Add an sleep timer to prevent performence issues when waiting
+                Thread.Sleep((_WeaselID + 1) * 50);
+
                 //Get the next possible movement
                 int[] next_route = GetNextPossibleRadiusRoute(destination);
 
@@ -70,12 +73,11 @@ namespace WeaselServer.Roboter.Weasels
                 //Wait for Position Change
                 while(CheckPositionInArray(next_route, _Weasel[_WeaselID].LastPosition) == -1)
                 {
-                    Thread.Sleep(200);
+                    Thread.Sleep(10);
                 }
 
                 //Unreserve when that move is finished
-                //Remove the last element before moving
-                int[] next_route_unreserve = IntManipulation.ArrayMinusOne(next_route);
+                int[] next_route_unreserve = IntManipulation.ArrayMinusOneSearchedItem(next_route, _Weasel[_WeaselID].LastPosition);
                 MapHandler.UnreserveArr(next_route_unreserve);
             }
         }
@@ -116,6 +118,23 @@ namespace WeaselServer.Roboter.Weasels
 
             //If there is an problem
             return 99;
+        }
+
+        private int CheckPositionInArrayIndex(int[] array, int number)
+        {
+            //Get where this number is located
+            int location = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == number)
+                {
+                    location = i;
+                    break;
+                }
+            }
+
+            //Return the index
+            return location;
         }
     }
 }
