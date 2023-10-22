@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WeaselServer.CommandHandler.Handlers;
+using WeaselServer.WeaselControllerBackend.Map;
 
 namespace WeaselServer.CommandHandler.Resolvers
 {
@@ -23,6 +24,21 @@ namespace WeaselServer.CommandHandler.Resolvers
         public static void Reserve(int id, Color color)
         {
             MapHandler.Reserve(id, color);
+        }
+
+        public static void UnReserve(int id)
+        {
+            MapHandler.UnReserve(id);
+        }
+
+        public static void ReserveArr(int[] positions, Color WeaselColor)
+        {
+            MapHandler.ReserveArr(positions, WeaselColor);
+        }
+
+        public static void UnreserveArr(int[] positions)
+        {
+            MapHandler.UnreserveArr(positions);
         }
 
         public static int[] FreePath(int start, int end, Color weasel_color)

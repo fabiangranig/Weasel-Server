@@ -60,6 +60,21 @@ namespace WeaselServer.CommandHandler.RestAPI
                         output.Write(buffer, 0, buffer.Length);
                     }
                 }
+                if (path == "/weasel")
+                {
+                    //Handle GET request to /map
+                    string responseString = WeaselResolver.WeaselsToJSON();
+                    byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
+
+                    HttpListenerResponse response = context.Response;
+                    response.ContentLength64 = buffer.Length;
+                    response.StatusCode = (int)HttpStatusCode.OK;
+
+                    using (System.IO.Stream output = response.OutputStream)
+                    {
+                        output.Write(buffer, 0, buffer.Length);
+                    }
+                }
                 else
                 {
                     //Handle unknown request with 404

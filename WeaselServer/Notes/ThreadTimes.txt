@@ -2,3 +2,4 @@ ThreadName - Time:
 KukaThread - 1000
 MoveByTick - 1000
 WeaselMover - 200
+WeaselMover -> MoveWeasel - 200

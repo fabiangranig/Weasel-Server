@@ -36,9 +36,14 @@ namespace WeaselServer.Roboter.Weasels
             this._Destinations = new List<DestinationInformation>();
         }
 
-        public int LastPosition { get { return _LastPosition; } }
-        public Color Color { get { return _Color; } }
         public int ID { get { return _ID; } }
+        public bool HasBox { get { return _HasBox; } }
+        public int BatteryPercentage { get { return _BatteryProcentage; } }
+        public int LastPosition { get { return _LastPosition; } }
+        public int HomePosition { get { return _HomePosition;} }
+        public Color Coloring {  get { return _Color; } }
+        public int ColorNumber { get { return _ColorNumber;} }
+        public List<DestinationInformation> Destinations { get {  return _Destinations; } }
 
         public DestinationInformation GetDestination()
         {

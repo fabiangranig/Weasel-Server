@@ -13,6 +13,7 @@ namespace WeaselServer.Roboter
         protected bool _Online;
 
         public string Name { get { return _Name; } }
+        public bool Online { get { return _Online; } }
 
         public Roboter(string Name1, bool _Online1)
         {

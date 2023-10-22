@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using WeaselServer.CommandHandler.Resolvers;
 using WeaselServer.Roboter;
 
 namespace WeaselServer.Roboter.Weasels.WeaselTypes
@@ -25,11 +26,6 @@ namespace WeaselServer.Roboter.Weasels.WeaselTypes
             _MoveByTick.Start();
         }
 
-        public void MoveToPosition(int position)
-        {
-            _Moves.Add(position);
-        }
-
         private void MoveByTickExecute()
         {
             while(1 == 1)
@@ -48,7 +44,14 @@ namespace WeaselServer.Roboter.Weasels.WeaselTypes
 
         public override void WeaselMove(int position)
         {
-            _Moves.Add(position);
+            int[] route = MapResolver.FreePath(_LastPosition, position, _Color);
+
+            _Moves.Clear();
+
+            for (int i = 0; i < route.Length; i++)
+            {
+                _Moves.Add(route[i]);
+            }
         }
     }
 }

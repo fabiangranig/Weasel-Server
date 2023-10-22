@@ -8,6 +8,10 @@ using WeaselServer.Roboter.Weasels;
 using WeaselServer.Roboter.Weasels.WeaselTypes;
 using WeaselServer.WeaselControllerBackend.Map;
 using System.Drawing.Text;
+using WeaselServer.CommandHandler.Resolvers;
+using Newtonsoft.Json;
+using WeaselServer.WeaselControllerBackend.JSON;
+using WeaselServer.Roboter.Weasels.JSON;
 
 namespace WeaselServer.CommandHandler.Handlers
 {
@@ -33,7 +37,7 @@ namespace WeaselServer.CommandHandler.Handlers
 
             //Reserve the point of the weasel
             //Reserve the current position
-            MapHandler.Reserve(_Weasels[_Weasels.Count - 1].LastPosition, _Weasels[_Weasels.Count -1].Color);
+            MapHandler.Reserve(_Weasels[_Weasels.Count - 1].LastPosition, _Weasels[_Weasels.Count -1].Coloring);
         }
 
         public string ListWeasels()
@@ -41,7 +45,7 @@ namespace WeaselServer.CommandHandler.Handlers
             string result = "";
             for(int i = 0; i < _Weasels.Count; i++)
             {
-                result += _Weasels[i].ID + " -> " + _Weasels[i].Name;
+                result += _Weasels[i].ID + " -> " + _Weasels[i].Name + _Weasels[i].LastPosition;
 
                 if(i < _Weasels.Count - 1)
                 {
@@ -53,7 +57,27 @@ namespace WeaselServer.CommandHandler.Handlers
 
         public void AddDestination(int WeaselID, DestinationInformation Destination)
         {
-            _Weasels[WeaselID].AddDestination(Destination);
+            if(WeaselID < _Weasels.Count)
+            {
+                _Weasels[WeaselID].AddDestination(Destination);
+            }
+            else
+            {
+                WriteLineResolver.WriteLine("WeaselID doesn't exist.");
+            }
+        }
+
+        public string WeaselsToJSON()
+        {
+            List<WeaselJSON> WeaselJSONs = new List<WeaselJSON>();
+            for(int i = 0; i < _Weasels.Count; i++)
+            {
+                Weasel weasel = _Weasels[i];
+                WeaselJSONs.Add(new WeaselJSON(weasel.Name, weasel.Online, weasel.ID, weasel.HasBox,
+                    weasel.BatteryPercentage, weasel.LastPosition, weasel.HomePosition, weasel.Coloring,
+                    weasel.ColorNumber, weasel.Destinations));
+            }
+            return JsonConvert.SerializeObject(WeaselJSONs, Formatting.Indented);
         }
     }
 }

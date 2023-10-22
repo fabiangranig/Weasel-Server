@@ -33,5 +33,10 @@ namespace WeaselServer.CommandHandler.Resolvers
         {
             _WeaselHandler.AddDestination(WeaselID, Destination);
         }
+
+        public static string WeaselsToJSON()
+        {
+            return _WeaselHandler.WeaselsToJSON();
+        }
     }
 }
