@@ -45,5 +45,10 @@ namespace WeaselServer.Roboter.Weasels.WeaselTypes
                 Thread.Sleep(1000);
             }
         }
+
+        public override void WeaselMove(int position)
+        {
+            _Moves.Add(position);
+        }
     }
 }

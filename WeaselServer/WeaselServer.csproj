@@ -85,9 +85,9 @@
     <Compile Include="Roboter\Kuka\RDK_Setup.cs" />
     <Compile Include="Roboter\Kuka\SPS_Claw.cs" />
     <Compile Include="Roboter\Roboter.cs" />
+    <Compile Include="Roboter\Weasels\MovementHandler.cs" />
     <Compile Include="Roboter\Weasels\Weasel.cs" />
     <Compile Include="Roboter\Weasels\DestinationInformation.cs" />
-    <Compile Include="Roboter\Weasels\WeaselMovementHandler.cs" />
     <Compile Include="Roboter\Weasels\WeaselTypes\VirtualWeasel.cs" />
     <Compile Include="WeaselControllerBackend\JSON\WaypointJSON.cs" />
     <Compile Include="WeaselControllerBackend\Map\Map.cs" />

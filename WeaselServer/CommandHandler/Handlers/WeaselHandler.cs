@@ -7,16 +7,19 @@ using System.Threading.Tasks;
 using WeaselServer.Roboter.Weasels;
 using WeaselServer.Roboter.Weasels.WeaselTypes;
 using WeaselServer.WeaselControllerBackend.Map;
+using System.Drawing.Text;
 
 namespace WeaselServer.CommandHandler.Handlers
 {
     internal class WeaselHandler
     {
         private List<Weasel> _Weasels;
-        private WeaselMovementHandler _WeaselsMovement;
+        private List<MovementHandler> _MovementHandler;
+
         public WeaselHandler()
         {
             _Weasels = new List<Weasel>();
+            _MovementHandler = new List<MovementHandler>();
         }
 
         public void AddWeaselVirtual(string WeaselCreate)
@@ -26,7 +29,7 @@ namespace WeaselServer.CommandHandler.Handlers
                 Int32.Parse(split[5]), Color.FromName(split[6]), Int32.Parse(split[7])));
 
             //Add an movement handler to the weasel
-            
+            _MovementHandler.Add(new MovementHandler(ref _Weasels, _Weasels.Count - 1));
 
             //Reserve the point of the weasel
             //Reserve the current position

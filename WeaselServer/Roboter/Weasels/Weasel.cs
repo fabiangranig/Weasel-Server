@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Threading.Tasks;
 using WeaselServer.WeaselControllerBackend.Map;
 using WeaselServer.CommandHandler.Handlers;
+using System.Runtime.CompilerServices;
+using WeaselServer.Logger;
 
 namespace WeaselServer.Roboter.Weasels
 {
@@ -55,6 +57,11 @@ namespace WeaselServer.Roboter.Weasels
         public void AddDestination(DestinationInformation Destination)
         {
             _Destinations.Add(Destination);
+        }
+
+        public virtual void WeaselMove(int position)
+        {
+            LoggerWorker.LogText("Calling non implemented Weasel! : Position " + position);
         }
     }
 }
