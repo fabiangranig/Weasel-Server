@@ -24,6 +24,11 @@ namespace WeaselServer.CommandHandler.Resolvers
             _WeaselHandler.AddWeaselVirtual(WeaselCreate);
         }
 
+        public static void AddWeaselReal(string WeaselCreate)
+        {
+            _WeaselHandler.AddWeaselReal(WeaselCreate);
+        }
+
         public static void DisplayWeasels()
         {
             WriteLineResolver.WriteLine(_WeaselHandler.ListWeasels());

@@ -40,6 +40,20 @@ namespace WeaselServer.CommandHandler.Handlers
             MapHandler.Reserve(_Weasels[_Weasels.Count - 1].LastPosition, _Weasels[_Weasels.Count -1].Coloring);
         }
 
+        public void AddWeaselReal(string WeaselCreate)
+        {
+            string[] split = WeaselCreate.Split('-');
+            _Weasels.Add(new RealWeasel(split[0], Convert.ToBoolean(split[1]), _Weasels.Count, Convert.ToBoolean(split[2]), Int32.Parse(split[3]), Int32.Parse(split[4]),
+                Int32.Parse(split[5]), Color.FromName(split[6]), Int32.Parse(split[7])));
+
+            //Add an movement handler to the weasel
+            _MovementHandler.Add(new MovementHandler(ref _Weasels, _Weasels.Count - 1));
+
+            //Reserve the point of the weasel
+            //Reserve the current position
+            MapHandler.Reserve(_Weasels[_Weasels.Count - 1].LastPosition, _Weasels[_Weasels.Count - 1].Coloring);
+        }
+
         public string ListWeasels()
         {
             string result = "";

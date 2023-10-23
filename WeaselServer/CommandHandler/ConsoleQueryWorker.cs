@@ -37,6 +37,12 @@ namespace WeaselServer.CommandHandler
                             LoggerWorker.LogText("Command: " + command);
                             break;
                         }
+                        if (split_string[2] == "real")
+                        {
+                            WeaselResolver.AddWeaselReal(split_string[3]);
+                            LoggerWorker.LogText("Command: " + command);
+                            break;
+                        }
                     }
                     if (split_string[1] == "show")
                     {

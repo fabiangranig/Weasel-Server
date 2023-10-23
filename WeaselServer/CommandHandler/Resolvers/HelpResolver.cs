@@ -16,6 +16,10 @@ namespace WeaselServer.CommandHandler.Resolvers
             Console.WriteLine("kuka move <file> -> Moves Kuka like file");
             Console.WriteLine("weasel create virtual Name(string)-Online(Boolean)-HasBox(Boolean)-BatteryPercentage(INT)-" +
                 "LastPositon(INT)-HomePosition(INT)-Color(string)-ColorNumber(INT) -> Creates virtual Weasel");
+            Console.WriteLine();
+            Console.WriteLine("weasel create real Name(string)-Online(Boolean)-HasBox(Boolean)-BatteryPercentage(INT)-" +
+                "LastPositon(INT)-HomePosition(INT)-Color(string)-ColorNumber(INT) -> Creates virtual Weasel");
+            Console.WriteLine();
             Console.WriteLine("map show -> shows map");
             Console.WriteLine("map reserve <id> <color>");
             Console.WriteLine("weasel show -> displays all existing weasels");
