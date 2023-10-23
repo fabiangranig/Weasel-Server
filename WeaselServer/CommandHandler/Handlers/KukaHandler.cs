@@ -12,12 +12,17 @@ namespace WeaselServer.CommandHandler.Handlers
     {
         private KukaRoboter _KR;
         private Thread _Thread;
-        private List<string> _MovementsLocations;
+        private List<KukaAction> _KukaActions;
+        private List<int> _ResolvedAction;
+
+        public List<int> ResolvedActions { get { return _ResolvedAction; } }
 
         public KukaHandler()
         {
             _KR = new KukaRoboter();
-            _MovementsLocations = new List<string>();
+            _ResolvedAction = new List<int>();
+
+            _KukaActions = new List<KukaAction>();
             _Thread = new Thread(KukaThread);
             _Thread.Name = "KukaThread";
             _Thread.Start();
@@ -28,10 +33,11 @@ namespace WeaselServer.CommandHandler.Handlers
             while(1 == 1)
             {
                 //Send Command if possible
-                if(_MovementsLocations.Count > 0)
+                if(_KukaActions.Count > 0)
                 {
-                    _KR.MoveKukaWithFile(_MovementsLocations[0]);
-                    _MovementsLocations.RemoveAt(0);
+                    _KR.MoveKukaWithFile(_KukaActions[0].Movement);
+                    _ResolvedAction.Add(_KukaActions[0].ID);
+                    _KukaActions.RemoveAt(0);
                 }
 
                 //Wait for next iteration
@@ -39,9 +45,9 @@ namespace WeaselServer.CommandHandler.Handlers
             }
         }
 
-        public void AddItem(string item)
+        public void AddItem(KukaAction K_Action)
         {
-            _MovementsLocations.Add(item);
+            _KukaActions.Add(K_Action);
         }
     }
 }

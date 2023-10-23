@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using S7.Net;
 using WeaselServer.Roboter.Kuka.MovementEditor;
 
 namespace WeaselServer.Roboter.Kuka
@@ -17,17 +16,25 @@ namespace WeaselServer.Roboter.Kuka
             //Go through all positions and move to them
             for(int i = 0; i < JointsPositions.Length; i++)
             {
-                Move(JointsPositions[i]);
+                //Is SPS Movement
+                if (JointsPositions[i].Contains('~'))
+                {
+                    SPSClaw.ReceiveCommand(JointsPositions[i]);
+                }
+                else
+                {
+                    Move(JointsPositions[i]);
+                }
             }
         }
 
-        private void Move(string postions)
+        private void Move(string positions)
         {
             if (!Check_ROBOT()) { Console.WriteLine("Keine Verbindung zum Roboter"); return; }
 
             double[] jointsNEU;
             jointsNEU = new double[6];
-            jointsNEU = String_2_Values_NEU(postions);
+            jointsNEU = String_2_Values_NEU(positions);
 
             // make sure RDK is running and we have a valid input
             if (!Check_ROBOT() || jointsNEU == null) { return; }

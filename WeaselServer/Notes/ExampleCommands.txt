@@ -2,12 +2,9 @@ weasel create virtual MC6-false-false-55-39-39-Blue-1
 weasel create virtual MC666-false-true-55-48-48-Green-1
 weasel create virtual MC777-false-true-55-46-46-Yellow-1
 
-weasel move 1 Kuka1:26:Kuka1
-weasel move 1 Kuka1:43:Kuka1
-weasel move 2 Kuka1:26:Kuka1
-weasel move 1 Kuka1:1:Kuka1
-weasel move 0 Kuka1:26:Kuka1
-weasel move 2 Kuka1:26:Kuka1
-weasel move 0 Kuka1:43:Kuka1
-weasel move 2 Kuka1:26:Kuka1
-weasel move 2 Kuka1:43:Kuka1
+weasel move 0 none:41:Pickup
+weasel move 0 none:39:none
+weasel move 1 none:41:Pickup
+weasel move 1 none:48:none
+weasel move 2 none:41:Pickup
+weasel move 2 none:46:none

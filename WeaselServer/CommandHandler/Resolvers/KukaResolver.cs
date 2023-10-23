@@ -17,9 +17,14 @@ namespace WeaselServer.CommandHandler.Resolvers
             _KH = new KukaHandler();
         }
 
-        public static void AddMovement(string item)
+        public static void AddMovement(KukaAction K_Action)
         {
-            _KH.AddItem(item);
+            _KH.AddItem(K_Action);
+        }
+
+        public static List<int> ReturnFinsihedList()
+        {
+            return _KH.ResolvedActions;
         }
     }
 }

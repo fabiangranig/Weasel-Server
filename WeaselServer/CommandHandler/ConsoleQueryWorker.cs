@@ -9,6 +9,7 @@ using WeaselServer.Logger;
 using WeaselServer.CommandHandler.Handlers;
 using System.Drawing;
 using WeaselServer.WeaselControllerBackend.Map;
+using WeaselServer.Roboter.Kuka;
 
 namespace WeaselServer.CommandHandler
 {
@@ -57,7 +58,7 @@ namespace WeaselServer.CommandHandler
                 case "kuka":
                     if (split_string[1] == "move")
                     {
-                        KukaResolver.AddMovement(split_string[2]);
+                        KukaResolver.AddMovement(new KukaAction(-1, split_string[2]));
                         LoggerWorker.LogText("Command: " + command);
                         break;
                     }

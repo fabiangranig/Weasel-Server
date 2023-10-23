@@ -59,7 +59,22 @@ namespace WeaselServer.CommandHandler.Handlers
         {
             if(WeaselID < _Weasels.Count)
             {
-                _Weasels[WeaselID].AddDestination(Destination);
+                //Check before command
+                if (_Weasels[WeaselID].HasBox == true)
+                {
+                    if(Destination.ActionBeforeMovement != "Pickup" && Destination.ActionAfterMovement != "Pickup")
+                    {
+                        _Weasels[WeaselID].AddDestination(Destination);
+                    }
+                    else
+                    {
+                        WriteLineResolver.WriteLine("Weasel has box.");
+                    }
+                }
+                else
+                {
+                    _Weasels[WeaselID].AddDestination(Destination);
+                }
             }
             else
             {

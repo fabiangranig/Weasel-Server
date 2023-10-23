@@ -80,11 +80,12 @@
     <Compile Include="Logger\LoggerWorker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roboter\Kuka\KukaAction.cs" />
     <Compile Include="Roboter\Kuka\KukaRoboter.cs" />
     <Compile Include="Roboter\Kuka\Library\RoboDK.cs" />
     <Compile Include="Roboter\Kuka\MovementEditor\ConvertIntoSingleArray.cs" />
     <Compile Include="Roboter\Kuka\RDK_Setup.cs" />
-    <Compile Include="Roboter\Kuka\SPS_Claw.cs" />
+    <Compile Include="Roboter\Kuka\SPSClaw.cs" />
     <Compile Include="Roboter\Roboter.cs" />
     <Compile Include="Roboter\Weasels\JSON\WeaselJSON.cs" />
     <Compile Include="Roboter\Weasels\MovementHandler.cs" />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace WeaselServer.Logger
 {
@@ -20,7 +21,25 @@ namespace WeaselServer.Logger
         public static void LogText(string loggedText)
         {
             string DateAndTime = DateTime.Now.ToString();
-            File.AppendAllText(_LogLocation, DateAndTime + ": " + loggedText + "\n");
+
+            //Try to write to that file
+            bool switcher = false;
+            while(switcher == false)
+            {
+                try
+                {
+                    File.AppendAllText(_LogLocation, DateAndTime + ": " + loggedText + "\n");
+                    switcher = true;
+                }
+                catch (Exception e)
+                {
+                    string error = e.ToString();
+                }
+
+                //Wait before next try
+                Thread.Sleep(200);
+            }
+            
         }
     }
 }
