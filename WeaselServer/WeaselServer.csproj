@@ -104,6 +104,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Notes\ColorNumbers.txt" />
+    <Content Include="Notes\ExampleCommands.txt" />
     <Content Include="Notes\Network.txt" />
     <Content Include="Notes\ThreadTimes.txt" />
   </ItemGroup>
