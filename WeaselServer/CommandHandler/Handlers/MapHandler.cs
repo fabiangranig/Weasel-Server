@@ -62,7 +62,5 @@ namespace WeaselServer.CommandHandler.Handlers
         {
             return _Map.RadiusRoute(arr);
         }
-
-        
     }
 }
