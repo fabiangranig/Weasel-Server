@@ -87,6 +87,10 @@ namespace WeaselServer.CommandHandler
                     LoggerWorker.LogText("Command '" + command + "' not found.");
                     break;
 
+                case "EE":
+                    EE_Resolver.EE_Run();
+                    break;
+
                 default:
                     NotFoundResolver.ConsoleOutputNotFound(command);
                     LoggerWorker.LogText("Command '" + command + "' not found.");
