@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.IO;
 using WeaselServer.CommandHandler.Resolvers;
 
 namespace WeaselServer.CommandHandler.RestAPI
@@ -22,7 +23,10 @@ namespace WeaselServer.CommandHandler.RestAPI
 
         private static void GetRequestHandler()
         {
-            string url = "http://localhost:9999/";
+            string[] readin = File.ReadAllLines("ReadIPFromText.txt");
+            string ipaddress = readin[0];
+
+            string url = "http://" + ipaddress + ":9999/";
             using (HttpListener listener = new HttpListener())
             {
                 listener.Prefixes.Add(url);
