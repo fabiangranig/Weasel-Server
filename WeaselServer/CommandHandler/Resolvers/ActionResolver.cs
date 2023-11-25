@@ -23,7 +23,7 @@ namespace WeaselServer.CommandHandler.Resolvers
             switch(command)
             {
                 case "Pickup":
-                    KukaAction K_Pickup = new KukaAction(_KukaActionID, "KukaMovements/MovementList_Pickup.kmf");
+                    KukaAction K_Pickup = new KukaAction(_KukaActionID, "KukaMovements/MovementList.kmf");
                     _KukaActionID += 1;
                     KukaResolver.AddMovement(K_Pickup);
 

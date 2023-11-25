@@ -12,6 +12,7 @@ using WeaselServer.CommandHandler.Resolvers;
 using Newtonsoft.Json;
 using WeaselServer.WeaselControllerBackend.JSON;
 using WeaselServer.Roboter.Weasels.JSON;
+using System.Threading;
 
 namespace WeaselServer.CommandHandler.Handlers
 {
@@ -30,7 +31,7 @@ namespace WeaselServer.CommandHandler.Handlers
         {
             string[] split = WeaselCreate.Split('-');
             _Weasels.Add(new VirtualWeasel(split[0], Convert.ToBoolean(split[1]), _Weasels.Count, Convert.ToBoolean(split[2]), Int32.Parse(split[3]), Int32.Parse(split[4]), 
-                Int32.Parse(split[5]), Color.FromName(split[6]), Int32.Parse(split[7])));
+                Int32.Parse(split[5]), Color.FromName(split[6])));
 
             //Add an movement handler to the weasel
             _MovementHandler.Add(new MovementHandler(ref _Weasels, _Weasels.Count - 1));
@@ -43,14 +44,16 @@ namespace WeaselServer.CommandHandler.Handlers
         public void AddWeaselReal(string WeaselCreate)
         {
             string[] split = WeaselCreate.Split('-');
-            _Weasels.Add(new RealWeasel(split[0], Convert.ToBoolean(split[1]), _Weasels.Count, Convert.ToBoolean(split[2]), Int32.Parse(split[3]), Int32.Parse(split[4]),
-                Int32.Parse(split[5]), Color.FromName(split[6]), Int32.Parse(split[7])));
+            _Weasels.Add(new RealWeasel(split[0], _Weasels.Count, Convert.ToBoolean(split[1]),
+                Int32.Parse(split[2]), Color.FromName(split[3])));
 
             //Add an movement handler to the weasel
             _MovementHandler.Add(new MovementHandler(ref _Weasels, _Weasels.Count - 1));
 
             //Reserve the point of the weasel
             //Reserve the current position
+            //Wait before issuing command
+            Thread.Sleep(5000);
             MapHandler.Reserve(_Weasels[_Weasels.Count - 1].LastPosition, _Weasels[_Weasels.Count - 1].Coloring);
         }
 
@@ -59,7 +62,7 @@ namespace WeaselServer.CommandHandler.Handlers
             string result = "";
             for(int i = 0; i < _Weasels.Count; i++)
             {
-                result += _Weasels[i].ID + " -> " + _Weasels[i].Name + _Weasels[i].LastPosition;
+                result += _Weasels[i].ID + " -> " + _Weasels[i].Name + " on " + _Weasels[i].LastPosition;
 
                 if(i < _Weasels.Count - 1)
                 {
@@ -104,7 +107,7 @@ namespace WeaselServer.CommandHandler.Handlers
                 Weasel weasel = _Weasels[i];
                 WeaselJSONs.Add(new WeaselJSON(weasel.Name, weasel.Online, weasel.ID, weasel.HasBox,
                     weasel.BatteryPercentage, weasel.LastPosition, weasel.HomePosition, weasel.Coloring,
-                    weasel.ColorNumber, weasel.Destinations));
+                    weasel.Destinations));
             }
             return JsonConvert.SerializeObject(WeaselJSONs, Formatting.Indented);
         }

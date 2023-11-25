@@ -19,11 +19,10 @@ namespace WeaselServer.Roboter.Weasels
         protected int _LastPosition;
         protected int _HomePosition;
         protected Color _Color;
-        protected int _ColorNumber;
         protected List<DestinationInformation> _Destinations;
 
         public Weasel(int ID1, bool HasBox1, int BatteryPercentage1, int LastPosition1, 
-            int HomePosition1, Color Color1, int ColorNumber1, string Name1,
+            int HomePosition1, Color Color1, string Name1,
             bool _Online1) : base (Name1, _Online1) 
         {
             this._ID = ID1;
@@ -32,7 +31,6 @@ namespace WeaselServer.Roboter.Weasels
             this._LastPosition = LastPosition1;
             this._HomePosition = HomePosition1;
             this._Color = Color1;
-            this._ColorNumber = ColorNumber1;
             this._Destinations = new List<DestinationInformation>();
         }
 
@@ -42,7 +40,6 @@ namespace WeaselServer.Roboter.Weasels
         public int LastPosition { get { return _LastPosition; } }
         public int HomePosition { get { return _HomePosition;} }
         public Color Coloring {  get { return _Color; } }
-        public int ColorNumber { get { return _ColorNumber;} }
         public List<DestinationInformation> Destinations { get {  return _Destinations; } }
 
         public DestinationInformation GetDestination()
@@ -67,6 +64,11 @@ namespace WeaselServer.Roboter.Weasels
         public virtual void WeaselMove(int position)
         {
             LoggerWorker.LogText("Calling non implemented Weasel! : Position " + position);
+        }
+
+        public virtual void RenewSetLastPosition()
+        {
+            this._LastPosition = _HomePosition;
         }
     }
 }

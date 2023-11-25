@@ -33,7 +33,7 @@ namespace WeaselServer.Roboter.Weasels
             while(1 == 1)
             {
                 //Check if an Movement is possible
-                if(_Weasel[_WeaselID].GetDestination() != null)
+                if(_Weasel[_WeaselID].Destinations.Count > 0)
                 {
                     EvaluateActions(_Weasel[_WeaselID].GetDestination());
                     _Weasel[_WeaselID].RemoveDestination();
@@ -58,6 +58,9 @@ namespace WeaselServer.Roboter.Weasels
 
         private void MoveWeasel(int destination)
         {
+            //If there was an issue set the weasel to the real last position
+            _Weasel[_WeaselID].RenewSetLastPosition();
+
             while (_Weasel[_WeaselID].LastPosition != destination)
             {
                 //Add an sleep timer to prevent performence issues when waiting
@@ -113,7 +116,7 @@ namespace WeaselServer.Roboter.Weasels
             }
             if (array.Length / 2 == location)
             {
-                return 0;
+                return -1;
             }
 
             //If there is an problem

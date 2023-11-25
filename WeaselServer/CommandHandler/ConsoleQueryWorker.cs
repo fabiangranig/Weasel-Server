@@ -68,6 +68,12 @@ namespace WeaselServer.CommandHandler
                         LoggerWorker.LogText("Command: " + command);
                         break;
                     }
+                    if (split_string[1] == "real")
+                    {
+                        KukaResolver.SetRealMode();
+                        LoggerWorker.LogText("Command: " + command);
+                        break;
+                    }
                     LoggerWorker.LogText("Command '" + command + "' not found.");
                     break;
 

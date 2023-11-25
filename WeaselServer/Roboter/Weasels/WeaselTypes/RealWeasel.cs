@@ -11,6 +11,7 @@ using WeaselServer.Logger;
 using WeaselServer.WeaselControllerBackend.Map;
 using static System.Net.WebRequestMethods;
 using System.Text.Json;
+using Newtonsoft.Json.Linq;
 
 namespace WeaselServer.Roboter.Weasels.WeaselTypes
 {
@@ -19,10 +20,10 @@ namespace WeaselServer.Roboter.Weasels.WeaselTypes
         private string _IPAddress;
         private Thread _LastPositionUpdater;
 
-        public RealWeasel(string Name1, bool _Online1, int ID1, bool HasBox1, int BatteryPercentage1, int LastPosition1,
-            int HomePosition1, Color Color1, int ColorNumber1) : base(ID1, HasBox1, BatteryPercentage1, LastPosition1,
-            HomePosition1, Color1, ColorNumber1, Name1,
-            _Online1)
+        public RealWeasel(string Name1, int ID1, bool HasBox1,
+            int HomePosition1, Color Color1) : base(ID1, HasBox1, -1, ID1+1,
+            HomePosition1, Color1, Name1,
+            true)
         {
             _IPAddress = "http://10.0.9.22:4567";
 
@@ -55,7 +56,7 @@ namespace WeaselServer.Roboter.Weasels.WeaselTypes
 
                 try
                 {
-                    LoggerWorker.LogText("Online: Trying to get " + _Name + "last position.");
+                    LoggerWorker.LogText("Online: Trying to get " + _Name + " last position.");
                     raw = wc.DownloadData("http://10.0.9.22:4567/weasels");
 
                     //Convert in an string
@@ -77,6 +78,36 @@ namespace WeaselServer.Roboter.Weasels.WeaselTypes
 
                 //Wait an moment before the next request
                 Thread.Sleep(100);
+            }
+        }
+
+        public override void RenewSetLastPosition()
+        {
+            try
+            {
+                WebClient wc = new WebClient();
+
+                byte[] raw = new byte[0];
+
+                LoggerWorker.LogText("Online: Trying to get " + _Name + " last position.");
+                raw = wc.DownloadData("http://10.0.9.22:4567/weasels");
+
+                //Convert in an string
+                string webData = System.Text.Encoding.UTF8.GetString(raw);
+
+                //Create the JSON Document
+                JsonDocument doc = JsonDocument.Parse(webData);
+                JsonElement root = doc.RootElement;
+                var u1 = root[this.ID];
+
+                //Create string values
+                string test = u1.GetProperty("lastWaypoint") + "";
+                _LastPosition = Int32.Parse(test);
+            }
+            catch (Exception e)
+            {
+                LoggerWorker.LogText("Error getting Weasel Position." + " " + e.ToString());
+                _LastPosition =  -1;
             }
         }
     }

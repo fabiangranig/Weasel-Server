@@ -49,5 +49,11 @@ namespace WeaselServer.CommandHandler.Handlers
         {
             _KukaActions.Add(K_Action);
         }
+
+        public void RealMode()
+        {
+            _KR.SwitchRealMode();
+            SPSClaw.SetOnlineMode(true);
+        }
     }
 }

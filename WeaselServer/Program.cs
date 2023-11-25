@@ -1,6 +1,7 @@
 ﻿using System;
 using WeaselServer.CommandHandler;
 using WeaselServer.CommandHandler.RestAPI;
+using WeaselServer.ConyeverBelt;
 
 namespace WeaselServer
 {
@@ -12,6 +13,8 @@ namespace WeaselServer
             Console.WriteLine("Starting the Weasel-Server!");
             Console.WriteLine("Starting GET-Requests Handler...");
             GetRequests.StartReuests();
+            Console.WriteLine("Starting Conveyer Belt...");
+            K_ConyeverBelt.StartConveyerBelt();
             Console.WriteLine("GET-Request Handler started.");
 
             //Accept unlimited commands from the user

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using WeaselServer.CommandHandler.Handlers;
@@ -25,6 +26,11 @@ namespace WeaselServer.CommandHandler.Resolvers
         public static List<int> ReturnFinsihedList()
         {
             return _KH.ResolvedActions;
+        }
+
+        public static void SetRealMode()
+        {
+            _KH.RealMode();
         }
     }
 }

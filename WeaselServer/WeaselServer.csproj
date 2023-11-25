@@ -91,6 +91,7 @@
     <Compile Include="CommandHandler\Resolvers\WeaselResolver.cs" />
     <Compile Include="CommandHandler\Resolvers\WriteLineResolver.cs" />
     <Compile Include="CommandHandler\RestAPI\GetRequests.cs" />
+    <Compile Include="ConyeverBelt\ConyeverBelt.cs" />
     <Compile Include="General\IntManipulation.cs" />
     <Compile Include="General\StringManipulation.cs" />
     <Compile Include="Logger\LoggerWorker.cs" />

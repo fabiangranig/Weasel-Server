@@ -16,8 +16,8 @@ namespace WeaselServer.Roboter.Weasels.WeaselTypes
         private List<int> _Moves;
 
         public VirtualWeasel(string Name1, bool _Online1, int ID1, bool HasBox1, int BatteryPercentage1, int LastPosition1,
-            int HomePosition1, Color Color1, int ColorNumber1) : base(ID1, HasBox1, BatteryPercentage1, LastPosition1,
-            HomePosition1, Color1, ColorNumber1, Name1,
+            int HomePosition1, Color Color1) : base(ID1, HasBox1, BatteryPercentage1, LastPosition1,
+            HomePosition1, Color1, Name1,
             _Online1)
         {
             _Moves = new List<int>();

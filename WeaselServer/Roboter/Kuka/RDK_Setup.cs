@@ -104,7 +104,7 @@ namespace WeaselServer.Roboter.Kuka
             RDK.setRunMode(RoboDK.RUNMODE_SIMULATE);
         }
 
-        protected void SwitchRealMode()
+        public void SwitchRealMode()
         {
             if (!Check_ROBOT()) { return; }
 
