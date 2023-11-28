@@ -10,7 +10,12 @@ namespace WeaselServer
         static void Main(string[] args)
         {
             //Starting the server
-            Console.WriteLine("Starting the Weasel-Server!");
+            Console.WriteLine("Starting the Weasel-Server V0.00!");
+            Console.WriteLine("© Fabian Granig");
+            Console.WriteLine("https://github.com/Fabianshrewd/Weasel-Server");
+
+            Console.WriteLine();
+
             Console.WriteLine("Starting GET-Requests Handler...");
             GetRequests.StartReuests();
             Console.WriteLine("Starting Conveyer Belt...");
