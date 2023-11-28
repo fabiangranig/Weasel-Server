@@ -74,8 +74,19 @@ namespace WeaselServer.Roboter.Weasels
                 _Weasel[_WeaselID].WeaselMove(next_route[next_route.Length - 1]);
 
                 //Wait for Position Change
-                while(CheckPositionInArray(next_route, _Weasel[_WeaselID].LastPosition) == -1)
+                while(1 == 1)
                 {
+                    if(next_route.Length == 0 || next_route.Length == 1)
+                    {
+                        Thread.Sleep(5000);
+                        break;
+                    }
+
+                    if(next_route[next_route.Length/2] == _Weasel[_WeaselID].LastPosition)
+                    {
+                        break;
+                    }
+
                     Thread.Sleep(10);
                 }
 
@@ -90,37 +101,6 @@ namespace WeaselServer.Roboter.Weasels
             int[] waypoint = MapResolver.FreePath(_Weasel[_WeaselID].LastPosition, destination, _Weasel[_WeaselID].Coloring);
             int[] waypoint_possible = MapResolver.possibleRoute(waypoint, _Weasel[_WeaselID].Coloring);
             return MapResolver.RadiusRoute(waypoint_possible);
-        }
-
-        private int CheckPositionInArray(int[] array, int number)
-        {
-            //Get where this number is located
-            int location = 0;
-            for(int i = 0; i < array.Length; i++)
-            {
-                if (array[i] == number)
-                {
-                    location = i;
-                    break;
-                }
-            }
-
-            //Return if it is in the upper or lower bound
-            if(array.Length / 2 > location)
-            {
-                return -1;
-            }
-            if (array.Length / 2 < location)
-            {
-                return 1;
-            }
-            if (array.Length / 2 == location)
-            {
-                return -1;
-            }
-
-            //If there is an problem
-            return 99;
         }
 
         private int CheckPositionInArrayIndex(int[] array, int number)

@@ -9,6 +9,7 @@ using System.Threading;
 using WeaselServer.CommandHandler.Resolvers;
 using WeaselServer.WeaselControllerBackend.Map;
 using WeaselServer.CommandHandler;
+using WeaselServer.Logger;
 
 namespace WeaselServer.ConyeverBelt
 {
@@ -43,13 +44,21 @@ namespace WeaselServer.ConyeverBelt
 
         private static bool GetSensor()
         {
-            using (Plc plc = new Plc(CpuType.S7300, "10.0.9.100", 0, 2))
+            try
             {
-                plc.Open();
-                while (1 == 1)
+                using (Plc plc = new Plc(CpuType.S7300, "10.0.9.100", 0, 2))
                 {
-                    return (bool)plc.Read("I510.1");
+                    plc.Open();
+                    while (1 == 1)
+                    {
+                        return (bool)plc.Read("I510.1");
+                    }
                 }
+            }
+            catch(Exception e)
+            {
+                LoggerWorker.LogText("Getting conyever belt failed: " + e.ToString());
+                return true;
             }
         }
     }
