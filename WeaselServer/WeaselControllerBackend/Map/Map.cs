@@ -47,6 +47,17 @@ namespace WeaselServer.WeaselControllerBackend.Map
             Waypoint temp = FindWayPoint(id);
             temp._Reserved = true;
             temp._ReservedColor = color1;
+
+            //Check if it is an combined node
+            for (int i = 0; i < _CombinedNodes.Count; i++)
+            {
+                if (id == _CombinedNodes[i][0])
+                {
+                    Waypoint temp2 = FindWayPoint(_CombinedNodes[i][1]);
+                    temp2._Reserved = true;
+                    temp2._ReservedColor = color1;
+                }
+            }
         }
 
         public void UnReserve(int id)
@@ -54,6 +65,17 @@ namespace WeaselServer.WeaselControllerBackend.Map
             Waypoint temp = FindWayPoint(id);
             temp._Reserved = false;
             temp._ReservedColor = Color.LightGreen;
+
+            //When one field of the combined field is unreserved, unreserve both
+            for (int i = 0; i < _CombinedNodes.Count; i++)
+            {
+                if (id == _CombinedNodes[i][0])
+                {
+                    Waypoint temp2 = FindWayPoint(_CombinedNodes[i][1]);
+                    temp2._Reserved = false;
+                    temp2._ReservedColor = Color.LightGreen;
+                }
+            }
         }
 
         public void ReserveArr(int[] arr, Color color1)
