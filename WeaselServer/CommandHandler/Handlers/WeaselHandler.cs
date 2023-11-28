@@ -30,31 +30,67 @@ namespace WeaselServer.CommandHandler.Handlers
         public void AddWeaselVirtual(string WeaselCreate)
         {
             string[] split = WeaselCreate.Split('-');
-            _Weasels.Add(new VirtualWeasel(split[0], Convert.ToBoolean(split[1]), _Weasels.Count, Convert.ToBoolean(split[2]), Int32.Parse(split[3]), Int32.Parse(split[4]), 
+
+            //Check if name exists don't create the weasel
+            bool name_exists = false;
+            for(int i = 0; i < _Weasels.Count; i++)
+            {
+                if(split[0] == _Weasels[i].Name)
+                {
+                    name_exists = true;
+                }
+            }
+
+            if(name_exists == false)
+            {
+                _Weasels.Add(new VirtualWeasel(split[0], Convert.ToBoolean(split[1]), _Weasels.Count, Convert.ToBoolean(split[2]), Int32.Parse(split[3]), Int32.Parse(split[4]),
                 Int32.Parse(split[5]), Color.FromName(split[6])));
 
-            //Add an movement handler to the weasel
-            _MovementHandler.Add(new MovementHandler(ref _Weasels, _Weasels.Count - 1));
+                //Add an movement handler to the weasel
+                _MovementHandler.Add(new MovementHandler(ref _Weasels, _Weasels.Count - 1));
 
-            //Reserve the point of the weasel
-            //Reserve the current position
-            MapHandler.Reserve(_Weasels[_Weasels.Count - 1].LastPosition, _Weasels[_Weasels.Count -1].Coloring);
+                //Reserve the point of the weasel
+                //Reserve the current position
+                MapHandler.Reserve(_Weasels[_Weasels.Count - 1].LastPosition, _Weasels[_Weasels.Count - 1].Coloring);
+            }
+            else if (name_exists == true)
+            {
+                WriteLineResolver.WriteLine("Weasel name is already existing.");
+            }
         }
 
         public void AddWeaselReal(string WeaselCreate)
         {
             string[] split = WeaselCreate.Split('-');
-            _Weasels.Add(new RealWeasel(split[0], _Weasels.Count, Convert.ToBoolean(split[1]),
+
+            //Check if name exists don't create the weasel
+            bool name_exists = false;
+            for (int i = 0; i < _Weasels.Count; i++)
+            {
+                if (split[0] == _Weasels[i].Name)
+                {
+                    name_exists = true;
+                }
+            }
+
+            if (name_exists == false)
+            {
+                _Weasels.Add(new RealWeasel(split[0], _Weasels.Count, Convert.ToBoolean(split[1]),
                 Int32.Parse(split[2]), Color.FromName(split[3])));
 
-            //Add an movement handler to the weasel
-            _MovementHandler.Add(new MovementHandler(ref _Weasels, _Weasels.Count - 1));
+                //Add an movement handler to the weasel
+                _MovementHandler.Add(new MovementHandler(ref _Weasels, _Weasels.Count - 1));
 
-            //Reserve the point of the weasel
-            //Reserve the current position
-            //Wait before issuing command
-            Thread.Sleep(5000);
-            MapHandler.Reserve(_Weasels[_Weasels.Count - 1].LastPosition, _Weasels[_Weasels.Count - 1].Coloring);
+                //Reserve the point of the weasel
+                //Reserve the current position
+                //Wait before issuing command
+                Thread.Sleep(5000);
+                MapHandler.Reserve(_Weasels[_Weasels.Count - 1].LastPosition, _Weasels[_Weasels.Count - 1].Coloring);
+            }
+            else if (name_exists == true)
+            {
+                WriteLineResolver.WriteLine("Weasel name is already existing.");
+            }  
         }
 
         public string ListWeasels()
