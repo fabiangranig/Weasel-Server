@@ -35,6 +35,7 @@ namespace WeaselServer.ConyeverBelt
                 Thread.Sleep(10);
                 if(GetSensor() == false)
                 {
+                    Thread.Sleep(10000);
                     WeaselResolver.AddDestination(0, new DestinationInformation("Console", "none", 41, "Pickup"));
                     WeaselResolver.AddDestination(0, new DestinationInformation("Console", "none", 39, "none"));
                     Thread.Sleep(10000);
