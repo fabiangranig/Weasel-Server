@@ -1,6 +1,6 @@
 weasel create real MC6-false-39-LightBlue
 weasel create real AV002-false-48-LightYellow
-weasel create real AV015-false-46-LightGreen
+weasel create real AV015-false-46-LightRed
 kuka real
 
 weasel create virtual MC6-false-false-55-39-39-Blue-1

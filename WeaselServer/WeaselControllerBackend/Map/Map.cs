@@ -90,8 +90,24 @@ namespace WeaselServer.WeaselControllerBackend.Map
         {
             for (int i = 0; i < arr.Length; i++)
             {
-                UnReserve(arr[i]);
+                if(!(i - 1 > -1 && CheckIfTwoPointsAreCombined(arr[i - 1], arr[i])))
+                {
+                    UnReserve(arr[i]);
+                }
             }
+        }
+
+        public bool CheckIfTwoPointsAreCombined(int point1, int point2)
+        {
+            bool schalter = false;
+            for (int i = 0; i < _CombinedNodes.Count; i++)
+            {
+                if (_CombinedNodes[i][0] == point1 && _CombinedNodes[i][1] == point2)
+                {
+                    schalter = true;
+                }
+            }
+            return schalter;
         }
 
         public List<string> ShowMap()

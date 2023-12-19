@@ -93,6 +93,7 @@ namespace WeaselServer.Roboter.Weasels
                 //Unreserve when that move is finished
                 int[] next_route_unreserve = IntManipulation.ArrayMinusOneSearchedItem(next_route, _Weasel[_WeaselID].LastPosition);
                 MapHandler.UnreserveArr(next_route_unreserve);
+                MapHandler.Reserve(_Weasel[_WeaselID].LastPosition, _Weasel[_WeaselID].Coloring);
             }
         }
 
