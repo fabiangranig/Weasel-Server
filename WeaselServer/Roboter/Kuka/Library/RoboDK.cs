@@ -1854,12 +1854,7 @@ public class RoboDK
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Please open RoboDK. App is closing in 5000ms...");
-                    Console.WriteLine("Please open RoboDK. App is closing in 5000ms...");
-                    Console.WriteLine("Please open RoboDK. App is closing in 5000ms...");
-                    Console.WriteLine(e.ToString());
-                    Thread.Sleep(15000);
-                    Environment.Exit(0);
+
                 }
 
 

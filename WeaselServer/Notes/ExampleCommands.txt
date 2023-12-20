@@ -17,8 +17,10 @@ weasel move 2 none:46:none
 weasel create virtual Test1-false-false-80-39-39-Blue
 
 weasel create virtual Test1-false-false-80-39-39-Blue
+weasel move 0 Pickup:39:.
 weasel create virtual Test2-false-false-80-48-48-Yellow
 weasel create virtual Test3-false-false-80-46-46-Green
+
 weasel move 0 .:1:.
 weasel move 1 .:1:.
 weasel move 2 .:1:.
