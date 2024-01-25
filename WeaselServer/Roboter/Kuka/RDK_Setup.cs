@@ -92,7 +92,7 @@ namespace WeaselServer.Roboter.Kuka
             }
         }
 
-        protected void SwitchSimulationMode()
+        public void SwitchSimulationMode()
         {
             // Check that there is a link with RoboDK
             if (!Check_ROBOT()) { return; }

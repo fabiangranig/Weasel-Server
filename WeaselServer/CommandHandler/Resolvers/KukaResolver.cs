@@ -28,6 +28,11 @@ namespace WeaselServer.CommandHandler.Resolvers
             return _KH.ResolvedActions;
         }
 
+        public static void SetVirtualMode()
+        {
+            _KH.VirtualMode();
+        }
+
         public static void SetRealMode()
         {
             _KH.RealMode();

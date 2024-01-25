@@ -13,6 +13,8 @@ namespace WeaselServer.CommandHandler.Resolvers
         {
             //Output the help menu
             Console.WriteLine("help -> Shows help menu");
+            Console.WriteLine("kuka virtual -> Set the Kuka in an virtual mode");
+            Console.WriteLine("kuka real -> Set the kuka in an real mode");
             Console.WriteLine("kuka move <file> -> Moves Kuka like file");
             Console.WriteLine("weasel create virtual Name(string)-Online(Boolean)-HasBox(Boolean)-BatteryPercentage(INT)-" +
                 "LastPositon(INT)-HomePosition(INT)-Color(string)-ColorNumber(INT) -> Creates virtual Weasel");
