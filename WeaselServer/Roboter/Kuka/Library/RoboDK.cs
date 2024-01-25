@@ -1207,18 +1207,18 @@ public class RoboDK
     public System.Diagnostics.Process PROCESS = null; // pointer to the process
 
 
-    string APPLICATION_DIR = "";            // file path to the robodk program (executable), typically C:/RoboDK/bin/RoboDK.exe. Leave empty to use the registry key: HKEY_LOCAL_MACHINE\SOFTWARE\RoboDK
-    string ARGUMENTS = "";                  // arguments to provide to RoboDK on startup
-    int SAFE_MODE = 1;                      // checks that provided items exist in memory
-    int AUTO_UPDATE = 0;                    // if AUTO_UPDATE is zero, the scene is rendered after every function call  
-    int _TIMEOUT = 10 * 1000;               // timeout for communication, in seconds
-    Socket _COM = null;                     // tcpip com
-    string IP = "localhost";                // IP address of the simulator (localhost if it is the same computer), otherwise, use RL = Robolink('yourip') to set to a different IP
-    int PORT_START = 20500;                 // port to start looking for app connection
-    int PORT_END = 20500;                   // port to stop looking for app connection
-    bool START_HIDDEN = false;              // forces to start hidden. ShowRoboDK must be used to show the window
-    int PORT = -1;                          // port where connection succeeded
-    int PORT_FORCED = -1;                   // port to force RoboDK to start listening
+    string APPLICATION_DIR = "Kuka_KR3_R540.rdk";           // file path to the robodk program (executable), typically C:/RoboDK/bin/RoboDK.exe. Leave empty to use the registry key: HKEY_LOCAL_MACHINE\SOFTWARE\RoboDK
+    string ARGUMENTS = "";                                  // arguments to provide to RoboDK on startup
+    int SAFE_MODE = 1;                                      // checks that provided items exist in memory
+    int AUTO_UPDATE = 0;                                    // if AUTO_UPDATE is zero, the scene is rendered after every function call  
+    int _TIMEOUT = 10 * 1000;                               // timeout for communication, in seconds
+    Socket _COM = null;                                     // tcpip com
+    string IP = "localhost";                                // IP address of the simulator (localhost if it is the same computer), otherwise, use RL = Robolink('yourip') to set to a different IP
+    int PORT_START = 20500;                                 // port to start looking for app connection
+    int PORT_END = 20500;                                   // port to stop looking for app connection
+    bool START_HIDDEN = false;                              // forces to start hidden. ShowRoboDK must be used to show the window
+    int PORT = -1;                                          // port where connection succeeded
+    int PORT_FORCED = -1;                                   // port to force RoboDK to start listening
 
 
     //Returns 1 if connection is valid, returns 0 if connection is invalid
@@ -1788,8 +1788,8 @@ public class RoboDK
                     }
                 }
                 catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
+                { 
+
                 }
             }
             if (connected)
