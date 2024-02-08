@@ -147,5 +147,25 @@ namespace WeaselServer.CommandHandler.Handlers
             }
             return JsonConvert.SerializeObject(WeaselJSONs, Formatting.Indented);
         }
+
+        public int GetPositionOfWeasel(int WeaselID)
+        {
+            return _Weasels[WeaselID].LastPosition;
+        }
+
+        public bool GetBoxStatusOfWeasel(int WeaselID)
+        {
+            return _Weasels[WeaselID].HasBox;
+        }
+
+        public int GetHomePositionOfWeasel(int WeaselID)
+        {
+            return _Weasels[WeaselID].HomePosition;
+        }
+
+        public int GetWeaselCount()
+        {
+            return _Weasels.Count;
+        }
     }
 }

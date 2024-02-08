@@ -29,6 +29,16 @@ namespace WeaselServer.CommandHandler.Resolvers
             _WeaselHandler.AddWeaselReal(WeaselCreate);
         }
 
+        public static void GetPositionOfWeasel(int WeaselID)
+        {
+            _WeaselHandler.GetPositionOfWeasel(WeaselID);
+        }
+
+        public static bool GetWeaselBoxStatus(int WeaselID)
+        {
+            return _WeaselHandler.GetBoxStatusOfWeasel(WeaselID);
+        }
+
         public static void DisplayWeasels()
         {
             WriteLineResolver.WriteLine(_WeaselHandler.ListWeasels());
@@ -36,12 +46,23 @@ namespace WeaselServer.CommandHandler.Resolvers
 
         public static void AddDestination(int WeaselID, DestinationInformation Destination)
         {
+            Destination.WeaselID = WeaselID;
             _WeaselHandler.AddDestination(WeaselID, Destination);
         }
 
         public static string WeaselsToJSON()
         {
             return _WeaselHandler.WeaselsToJSON();
+        }
+
+        public static int GetWeaselCount()
+        {
+            return _WeaselHandler.GetWeaselCount();
+        }
+
+        public static int GetHomePositionOfWeasel(int WeaselID)
+        {
+            return _WeaselHandler.GetHomePositionOfWeasel(WeaselID);
         }
     }
 }

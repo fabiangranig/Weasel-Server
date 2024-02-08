@@ -21,6 +21,10 @@ namespace WeaselServer.Roboter.Kuka
                 {
                     SPSClaw.ReceiveCommand(JointsPositions[i]);
                 }
+                else if (JointsPositions[i].Contains('~'))
+                {
+                    
+                }
                 else
                 {
                     Move(JointsPositions[i]);

@@ -103,6 +103,10 @@ namespace WeaselServer.CommandHandler
                     EE_Resolver.EE_Run();
                     break;
 
+                case "sensor":
+                    ConyeverBeltResolver.ManualSensorTouchSwitch();
+                    break;
+
                 default:
                     NotFoundResolver.ConsoleOutputNotFound(command);
                     LoggerWorker.LogText("Command '" + command + "' not found.");

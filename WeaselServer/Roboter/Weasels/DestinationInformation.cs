@@ -9,11 +9,13 @@ namespace WeaselServer.WeaselControllerBackend.Map
     internal class DestinationInformation
     {
         private string _SendBy;
+        private int _WeaselID;
         private string _ActionBeforeMovement;
         private int _Destination;
         private string _ActionAfterMovement;
 
         public string SendBy { get { return _SendBy; } }
+        public int WeaselID { get { return this._WeaselID; } set { this._WeaselID = WeaselID; } }
         public string ActionBeforeMovement {  get { return _ActionBeforeMovement; } }
         public int Destination { get { return _Destination; } }
         public string ActionAfterMovement { get { return _ActionAfterMovement; } }
