@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using WeaselServer.Roboter.Kuka.MovementEditor;
 
@@ -20,6 +21,10 @@ namespace WeaselServer.Roboter.Kuka
                 if (JointsPositions[i].Contains('~'))
                 {
                     SPSClaw.ReceiveCommand(JointsPositions[i]);
+
+                    //Sleep between movements
+                    //Is used to prevent skipping an movement
+                    Thread.Sleep(100);
                 }
                 else if (JointsPositions[i].Contains('~'))
                 {
