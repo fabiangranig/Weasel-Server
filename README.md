@@ -1,4 +1,18 @@
 # Weasel-Server
+## setup
+# ip adress
+ReadIPFromText.txt is used to bind the ip address to the corresponding port, by default this is 9999. Firewall settings have to be set accordingly for the service to be avaible.
+
+# admin
+To make the REST API available in the network. You need to start the program with administrator permissions.
+
+## start file
+# HTL Wolfsberg
+weasel create real MC6-false-39-LightBlue
+weasel create real AV002-false-48-LightYellow
+weasel create real AV015-false-46-LightRed
+kuka real
+
 ## Commands
 ### help
 shows all available commands
@@ -18,11 +32,14 @@ used to move an virtual or real weasel to the corresponding position. A virtual 
 ### kuka move :path:
 used to move the kuka with an .kmf file that was created previously. The 
 
+### kuka virtual/real
+used to set the kuka in simulation or in real mode. At start this setting is set so simulation
 
-kuka virtual -> 
-kuka real ->
-map show ->
-map reserve ->
-EE ->
-sensor -> 
-wrong Input -> 
+### map show
+used to show the weasel map
+
+## map reserve
+used to reserve a point on the map
+
+## sensor
+used to virtually touch the sensor
